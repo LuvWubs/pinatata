@@ -37,7 +37,7 @@ class Splash extends React.Component {
       console.log(response);
       this.setState({signUpError:""});
       this.setState({isLoggedIn:true});
-      this.props.loggedIn(this.state.isLoggedIn);
+      this.props.loggedIn(this.state.isLoggedIn, response.data);
     })
     .catch((error)=> {
     console.log(error);
@@ -54,7 +54,7 @@ class Splash extends React.Component {
       console.log("signed In", response);
       this.setState({signUpError:""});
       this.setState({isLoggedIn:true});
-     this.props.loggedIn(this.state.isLoggedIn);
+     this.props.loggedIn(this.state.isLoggedIn, response.data);
 
     })
     .catch((error)=> {

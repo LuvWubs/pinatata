@@ -33,7 +33,7 @@ class SignIn extends React.Component {
 
   submitSignInUser(event){
       event.preventDefault();
-    alert(JSON.stringify(this.user));
+
     this.props.signInUser(this.user);
 
 }

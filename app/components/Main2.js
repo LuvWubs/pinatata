@@ -15,14 +15,16 @@ class Main extends React.Component {
     this.loggedIn = this.loggedIn.bind(this);
     this.state = {
       isLoggedIn: false,
-      loginMessage: "not logged in"
+      currentUser:""
     };
     //this.state = {loggedIn:"false", isLoggedIn="false"};
     //  this.state = {isLoggedIn:"false"};
 
   }
-  loggedIn(loggedBoolean) {
+  loggedIn(loggedBoolean, data) {
     this.setState({isLoggedIn: loggedBoolean})
+    this.setState({currentUser: data})
+    console.log("current user", this.state.currentUser)
   }
 
   componentDidMount() {
@@ -32,10 +34,12 @@ class Main extends React.Component {
       console.log("getting login info", response);
       if (response.data){
         this.setState({isLoggedIn:true})
+        this.setState({currentUser:response.data})
 
       }
       else{
         this.setState({isLoggedIn:false})
+        this.setState({currentUser:''})
 
       }
       console.log(this.state.isLoggedIn);
@@ -57,7 +61,7 @@ class Main extends React.Component {
     // let loggedIn = true;
     let displayComp;
     if (this.state.isLoggedIn) {
-      displayComp = <NYTimes loggedIn={this.loggedIn}/>;
+      displayComp = <Game loggedIn={this.loggedIn} currentUser={this.state.currentUser}/>;
     } else {
       displayComp = <Splash loggedIn={this.loggedIn}/>;
     }

@@ -1,5 +1,5 @@
 .container{
-  margin-top: 50px;
+  margin-top: 0px;
   background-color: rgba(254, 255, 242, 1);
 
   text-align:center;
@@ -7,6 +7,11 @@
 .jumbotron{
   padding: 20px 20px 0px 20px;
   background-color: rgba(220, 220, 220, 1);
+}
+.game-nav{
+  height:40px;
+  width:100%;
+  display:flex;
 }
 .profile-div{
   background-color: white;
