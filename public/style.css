@@ -1,17 +1,58 @@
+
+body,html, canvas{width:100%;height:100%;padding:0;margin:0;}
+
 .container{
   margin-top: 0px;
-  background-color: rgba(254, 255, 242, 1);
+  align:center;
 
   text-align:center;
 }
+.auth-container{
+  width:290px;
+  background-color: rgba(0, 200, 247, 1);
+  padding-bottom: 20px;
+  /*border-radius:100px;*/
+  min-height:220px;
+
+}
+body{
+  margin:0;
+}
 .jumbotron{
+  /*border-top-right-radius: 100px;*/
+  /*border-top-left-radius: 100px;*/
+  width:250px;
   padding: 20px 20px 0px 20px;
-  background-color: rgba(220, 220, 220, 1);
+  background-color: rgba(129, 204, 145, 1);
 }
 .game-nav{
   height:40px;
   width:100%;
+  margin-top:0px;
+  padding:5px;
   display:flex;
+  justify-content:space-around;
+  align-items:center;
+  background-color: rgba(129, 204, 145, 1);
+}
+
+.game-title{
+  margin:0px;
+}
+.game-sub-title{
+  margin:0px;
+}
+.game-link{
+  height:40px;
+  padding:10px;
+  background-color: rgba(0, 200, 247, 1);
+  color:white;
+  margin-left: 4px;
+}
+.game-link:hover{
+
+  background-color: rgba(100, 250, 250, 1);
+
 }
 .profile-div{
   background-color: white;
@@ -31,7 +72,8 @@
 .search-box{
   /*height:30px;
   width:200px;*/
-  margin-top:50px;
+
+  margin-top:30px;
 }
 
 .link-auth{

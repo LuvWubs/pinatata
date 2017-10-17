@@ -2,7 +2,6 @@ import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 //const React = require("react");
-const NYTimes = require("./children/NYT");
 const Splash = require("./children/Splash");
 const Game = require("./children/Game");
 const axios = require("axios");

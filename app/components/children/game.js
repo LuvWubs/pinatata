@@ -45,9 +45,9 @@ class Game extends React.Component {
       <Router>
         <div className="game-container">
           <div className="game-nav">
-            <h1 className="sub-title1">Pinatata</h1>
-            <p className="sub-title2">
-              <em>Own, Play, Love
+            <h1 className="game-title">Pinatata</h1>
+            <p className="game-sub-title">
+              <em>Grow, Play, Love, Fight
               </em>
             </p>
 
