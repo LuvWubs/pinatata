@@ -107,6 +107,7 @@ module.exports = function(passport, app, user) {
           });
           downloader.on('end', function() {
             console.log("done downloading");
+            //fs.writeFile("text.txt", data, (error) => { /* handle error */ });
             return res.sendFile(path.resolve(picPath));
 
           });
@@ -225,14 +226,15 @@ module.exports = function(passport, app, user) {
 
   app.post("/profile", function(req, res) {
     //console.log(keys);
-
+    console.log("made it to /profile!!!!")
+    console.log(req.files.file);
     if (!req.files) {
       return res.status(400).send('No files were uploaded.');
     }
-    console.log(req.body);
+    console.log(req.files.file.name);
 
     var imageInfo = {
-      img_url: req.files.uploadedPic.name,
+      img_url: req.files.file.name + req.user.id,
       //name:req.files.uploadedPic.name,
       human_id: req.user.id
     }
@@ -244,21 +246,21 @@ module.exports = function(passport, app, user) {
       //console.log(err);
     });
     // The name of the input field (i.e. "uploadedPic") is used to retrieve the uploaded file
-    var uploadedPic = req.files.uploadedPic;
+    var uploadedPic = req.files.file;
 
     // Use the mv() method to place the file somewhere on your server
-    uploadedPic.mv('uploads/' + req.files.uploadedPic.name, function(err) {
+    uploadedPic.mv('uploads/' + imageInfo.img_url, function(err) {
       if (err) {
         return res.status(500).send(err);
       }
       //  var picPath = path.join(__dirname + '/../../uploads/'  + req.files.uploadedPic.name);
       // Upload to S3
       var params = {
-        localFile: 'uploads/' + req.files.uploadedPic.name,
+        localFile: 'uploads/' + imageInfo.img_url,
 
         s3Params: {
           Bucket: keys.s3bucket,
-          Key: req.files.uploadedPic.name, // name of picture
+          Key: imageInfo.img_url, // name of picture
         }
       };
 
@@ -269,15 +271,16 @@ module.exports = function(passport, app, user) {
       });
       uploader.on('end', function() {
         console.log('File uploaded!');
-        res.sendFile(path.join(__dirname + '/../../views/profile.html'));
+        res.status(200);
+        //res.sendFile(path.join(__dirname + '/../../components/children/profile.html'));
       });
-      setTimeout(function() {
-        if (fs.existsSync('uploads/' + req.files.uploadedPic.name)) { // check to ensure file still exists on file system
-          fs.unlink('uploads/' + req.files.uploadedPic.name); // delete file from server file system after 60 seconds
-        } else {
-          console.log("Picture Does Not Exist")
-        }
-      }, 6000);
+      // setTimeout(function() {
+      //   if (fs.existsSync('uploads/' + imageInfo.img_url)) { // check to ensure file still exists on file system
+      //     fs.unlink('uploads/' + imageInfo.img_url); // delete file from server file system after 60 seconds
+      //   } else {
+      //     console.log("Picture Does Not Exist")
+      //   }
+      // }, 6000);
     });
 
   }); //end post route

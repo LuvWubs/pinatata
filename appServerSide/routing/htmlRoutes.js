@@ -128,6 +128,12 @@ module.exports = function(app, passport) {
 
   });
 
+  // app.get("/public/:folder/:file", function(req, res){
+  //   var folder=req.params.folder;
+  //   var file=req.params.file;
+  //   res.sendFile(path.join(__dirname, "/../../public",folder,file));
+  // });
+
 	function isLoggedIn(req, res, next) {
 		console.log("isloggedIn?")
 		if (req.isAuthenticated()) {

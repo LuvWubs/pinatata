@@ -9,6 +9,7 @@ var session    = require('cookie-session')
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var methodOverride = require('method-override');
+var path = require("path");
 
 // Require History Schema
 var History = require("./appServerSide/models/History");
@@ -32,6 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
 
 //app.use(express.static("public"));
 
@@ -73,6 +75,12 @@ app.get("/signup", function(req,res){
 app.get("/signin", function(req,res){
   res.sendFile(__dirname + "/public/index.html");
 })
+
+app.get("/public/:folder/:file", function(req, res){
+  var folder=req.params.folder;
+  var file=req.params.file;
+  res.sendFile(path.join(__dirname, "/public",folder,file));
+});
 
 //
 //
