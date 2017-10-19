@@ -7,8 +7,12 @@ const SignUp = require("./SignUp");
 //const Profile = require("./Profile");
 const SignIn = require("./SignIn");
 
-const DonkeyIntro = require("./donkey_intro");
+ const ObjViewer = require("./donkey_intro");
+//const ObjViewer = require("./object-viewer");
+
 const Simple= require("./pinata_anim");
+
+const GreenS= require("./gsexe");
 
 
 // Creating the Profile component
@@ -84,9 +88,12 @@ class Splash extends React.Component {
     const Sign_up = () => <SignUp makeUser={this.makeUser}/>
     const Sign_in = () => <SignIn signInUser={this.signInUser}/>
     const Anim=()=><Simple />
+    const Anim2=()=><ObjViewer />
+    const Green=()=><GreenS />
     return (
 
       <Router>
+
         {/* <Simple /> */}
         <div className="container">
 
@@ -94,7 +101,7 @@ class Splash extends React.Component {
           <div className="jumbotron">
             <h1 className="sub-title1">Pinatata</h1>
             <p className="sub-title2">
-              <em>Own, Play, Love
+              <em>Grow, Fight, Play, Love
               </em>
             </p>
             <div className="sign-up-error">{this.state.signUpError}</div>
@@ -114,6 +121,14 @@ class Splash extends React.Component {
                 textDecoration: 'none'
               }}>anim</Link>
 
+              <Link to="/anim2" className='link-auth' style={{
+                textDecoration: 'none'
+              }}>anim2</Link>
+
+              <Link to="/green" className='link-auth' style={{
+                textDecoration: 'none'
+              }}>greensock</Link>
+
             </div>
           </div>
 
@@ -122,7 +137,8 @@ class Splash extends React.Component {
               <Route path="/signin" component={Sign_in}/>
               <Route path="/signup" component={Sign_up}/>
               <Route path="/anim" component={Anim}/>
-
+              <Route path="/anim2" component={Anim2}/>
+              <Route path="/green" component={Green}/>
             </Switch>
           </div>
         </div>

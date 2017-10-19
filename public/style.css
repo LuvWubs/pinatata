@@ -35,7 +35,10 @@ body{
   align-items:center;
   background-color: rgba(129, 204, 145, 1);
 }
-
+.containAnim{
+  width:1000px;
+  height:1000px;
+}
 .game-title{
   margin:0px;
 }
@@ -102,4 +105,34 @@ body{
 .sub-title2{
   margin-top:-10px;
   margin-bottom:40px;
+}
+
+.box {
+    background-color: #88ce02;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.boxSmall {
+    position: absolute;
+    background-color: #70a40b;
+    bottom: 0;
+    left: 0;
+    width: 25px;
+    height: 75px;
+    z-index: 2;
+}
+
+.boxTiny {
+    background-color: #577a14;
+    height: 50px;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    z-index: 3;
 }
