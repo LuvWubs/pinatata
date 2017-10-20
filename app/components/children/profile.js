@@ -14,7 +14,7 @@ class Profile extends React.Component {
 
     this.state = {
       isHidden: true,
-      profile_pic:""
+      profile_pic:"https://s3-us-west-2.amazonaws.com/petopair-s3-bucket/profpic"+this.props.currentUser._id
     }
     this.toggleHidden=this.toggleHidden.bind(this);
   }
@@ -25,25 +25,37 @@ class Profile extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    // axios.get("/profile_pic").then((response) => {
-    //   console.log(response);
-    //   this.setState({profile_pic: response.data});
-    //
-    // }).catch((error) => {
-    //   console.log(error);
-    //
-    // });
-    this.refs.profileImg.src="/profile_pic";
-
-
-  }
+//   componentDidMount() {
+//     axios.get("/profile_pic").then((response) => {
+//       console.log(response);
+//       this.setState({profile_pic: response.data});
+//
+//     }).catch((error) => {
+//       console.log(error);
+//
+//     });
+//     this.refs.profileImg.src="/profile_pic";
+//
+//   }
+//
+//   // componentWillReceiveProps(){
+//   //   console.log("UserChange");
+//   //   this.refs.profileImg.src="/profile_pic";
+//   // }
+//
+//   componentDidUpdate(prevProps, prevState) {
+//     console.log("doing this");
+//   // only update chart if the data has changed
+//   if (prevProps.data !== this.props.data) {
+//     this.refs.profileImg.src="/profile_pic";
+//   }
+// }
 
   render() {
     return (
       <div> Profile Shit Here
         <div className='user-info'>{JSON.stringify(this.props.currentUser)}</div>
-        <div><img ref="profileImg" id="main-profile-pic" src="" alt="main profile picture" /></div>
+        <div><img ref="profileImg" id="main-profile-pic" src={this.state.profile_pic} alt="main profile picture" /></div>
         {/* </div><a href="/uploadProfilePic">UPLOAD PROFILE PIC</a> */}
         <div>
           <button onClick={this.toggleHidden.bind(this)} >

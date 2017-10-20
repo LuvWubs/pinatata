@@ -7,7 +7,7 @@ const SignUp = require("./SignUp");
 //const Profile = require("./Profile");
 const SignIn = require("./SignIn");
 
- const ObjViewer = require("./donkey_intro");
+ const DonkeyIntro = require("./donkey_intro");
 //const ObjViewer = require("./object-viewer");
 
 const Simple= require("./pinata_anim");
@@ -88,7 +88,7 @@ class Splash extends React.Component {
     const Sign_up = () => <SignUp makeUser={this.makeUser}/>
     const Sign_in = () => <SignIn signInUser={this.signInUser}/>
     const Anim=()=><Simple />
-    const Anim2=()=><ObjViewer />
+    const Anim2=()=><DonkeyIntro />
     const Green=()=><GreenS />
     return (
 

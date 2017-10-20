@@ -274,13 +274,13 @@ module.exports = function(passport, app, user) {
         res.status(200);
         //res.sendFile(path.join(__dirname + '/../../components/children/profile.html'));
       });
-      // setTimeout(function() {
-      //   if (fs.existsSync('uploads/' + imageInfo.img_url)) { // check to ensure file still exists on file system
-      //     fs.unlink('uploads/' + imageInfo.img_url); // delete file from server file system after 60 seconds
-      //   } else {
-      //     console.log("Picture Does Not Exist")
-      //   }
-      // }, 6000);
+      setTimeout(function() {
+        if (fs.existsSync('uploads/' + imageInfo.img_url)) { // check to ensure file still exists on file system
+          fs.unlink('uploads/' + imageInfo.img_url); // delete file from server file system after 60 seconds
+        } else {
+          console.log("Picture Does Not Exist")
+        }
+      }, 6000);
     });
 
   }); //end post route

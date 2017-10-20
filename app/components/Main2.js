@@ -14,7 +14,8 @@ class Main extends React.Component {
     this.loggedIn = this.loggedIn.bind(this);
     this.state = {
       isLoggedIn: false,
-      currentUser:""
+      currentUser:"",
+      profileImg:""
     };
     //this.state = {loggedIn:"false", isLoggedIn="false"};
     //  this.state = {isLoggedIn:"false"};
@@ -34,7 +35,7 @@ class Main extends React.Component {
       if (response.data){
         this.setState({isLoggedIn:true})
         this.setState({currentUser:response.data})
-
+      //  this.setState({profileImg:"/})
       }
       else{
         this.setState({isLoggedIn:false})
