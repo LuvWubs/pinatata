@@ -85,13 +85,14 @@ class Splash extends React.Component {
   }
 
   render() {
+
     const Sign_up = () => <SignUp makeUser={this.makeUser}/>
     const Sign_in = () => <SignIn signInUser={this.signInUser}/>
     const Anim=()=><Simple />
     const Anim2=()=><DonkeyIntro />
     const Green=()=><GreenS />
     return (
-
+    <div>
       <Router>
 
         {/* <Simple /> */}
@@ -144,8 +145,10 @@ class Splash extends React.Component {
         </div>
       </div>
       </Router>
+      <div id='donkeyDiv' className='donkeyIntro'><DonkeyIntro /></div>
+    </div>
+  )
 
-    );
   }
 };
 
