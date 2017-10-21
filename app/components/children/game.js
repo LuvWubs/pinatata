@@ -5,7 +5,7 @@ const axios = require("axios");
 
 const Profile = require("./Profile");
 //const Profile = require("./Profile");
-const BattleWindow = require("./donkey");
+const BattleWindow = require("./battlewindow");
 const PinataProfile = require("./pinataProfile");
 const Instructions= require("./instructions");
 const ChoosePinata= require("./choosePinata");

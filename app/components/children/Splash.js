@@ -13,7 +13,7 @@ const SignIn = require("./SignIn");
 
 const Simple= require("./pinata_anim");
 
-const GreenS= require("./gsexe");
+//const GreenS= require("./gsexe");
 
 
 // Creating the Profile component
@@ -95,8 +95,7 @@ class Splash extends React.Component {
     return (
     <div className="splash-wrapper">
       <div>
-    <Favicon url="http://oflisback.github.io/react-favicon/public/img/github.ico" />
-    <h1>Hello, Favicon!</h1>
+    <Favicon url="http://www.favicon.cc/logo3d/512858.png" />
   </div>
 
       <Router>

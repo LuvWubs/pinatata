@@ -25,6 +25,7 @@ class ChoosePinata extends React.Component {
     this.choosePet=this.choosePet.bind(this);
     this.state = {
       animal:''
+
     //  currentUser:{this.props.currentUser}
       //profile_pic:"https://s3-us-west-2.amazonaws.com/petopair-s3-bucket/profpic"+this.props.currentUser._id
     }
@@ -91,8 +92,10 @@ class ChoosePinata extends React.Component {
               </div>
 
             </div>
-
-            <button onClick={this.choosePet} id="choose-button"> choose the {this.state.animal}</button>
+            <div>
+              <br/>
+            <button onClick={this.choosePet} id="choose-button"> Click to confirm {this.state.animal}</button>
+          </div>
               <div className='choose-component-div'>
                 <Switch>
                   <Route path="/choosechicken" component={ChickenRef}/>

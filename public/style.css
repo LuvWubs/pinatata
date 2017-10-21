@@ -74,6 +74,9 @@ justify-content: start;
   background-color: rgba(100, 250, 250, 1);
 
 }
+.game-content{
+  margin:20px;
+}
 .toggle-div{
   border: 2px solid black;
   width: 220px;

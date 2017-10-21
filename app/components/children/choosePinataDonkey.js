@@ -88,17 +88,17 @@ class ChooseDonkeyPinata extends React.Component {
 
     //
     //   //look both ways
-    donkeyPinata.tl.to(donkeyPinata.rotation, 3, {
+    donkeyPinata.tl.to(donkeyPinata.rotation, 2, {
       y: Math.PI / 4
     });
-    donkeyPinata.tl.to(donkeyPinata.rotation, 3, {
+    donkeyPinata.tl.to(donkeyPinata.rotation, 2, {
       y: -Math.PI / 4
     });
     donkeyPinata.tl.to(donkeyPinata.rotation, 1, {y:0});
 
 
     //donkey jump
-    donkeyPinata.tl.to(donkeyPinata.position, .2, {y: 5});
+    donkeyPinata.tl.to(donkeyPinata.position, .2, {y: 2});
     donkeyPinata.tl.to(donkeyPinata.position, 1, {y: 0, ease:Power4.easeOut});
 
     //donkey flip
@@ -111,7 +111,15 @@ class ChooseDonkeyPinata extends React.Component {
     //turn and walk away
     donkeyPinata.tl.to(donkeyPinata.rotation, 3, {y:Math.PI});
 
-    donkeyPinata.tl.to(donkeyPinata.position, 5, {z:-1000});
+    donkeyPinata.tl.to(donkeyPinata.position, 5, {z:-400});
+
+    donkeyPinata.tl.to(donkeyPinata.rotation, 3, {y:2*Math.PI});
+
+    donkeyPinata.tl.to(donkeyPinata.position, 3, {z:40});
+    donkeyPinata.tl.to(donkeyPinata.position, .2, {y: 2});
+    donkeyPinata.tl.to(donkeyPinata.position, 1, {y: 0, ease:Power4.easeOut});
+    donkeyPinata.tl.to(donkeyPinata.position, .2, {y: 2});
+    donkeyPinata.tl.to(donkeyPinata.position, 1, {y: 0, ease:Power4.easeOut});
 
     scene.add(donkeyPinata);
     this.render1();
@@ -139,7 +147,6 @@ class ChooseDonkeyPinata extends React.Component {
           <canvas ref="threeCanvas"></canvas>
         </div>
 
-        <div className='user-info'>This is the donkey intro!! rara!</div>
       </div>
     );
   }

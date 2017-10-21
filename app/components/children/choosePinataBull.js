@@ -8,7 +8,7 @@ import {TweenMax, Power2, TimelineMax} from "gsap";
 let renderer,
   scene,
   camera,
-  donkeyPinata,
+  bullPinata,
   directionalLight;
 
 
@@ -22,7 +22,7 @@ class ChooseBullPinata extends React.Component {
     this.render1= this.render1.bind(this);
     //this.init= this.init.bind(this);
     this.render= this.render.bind(this);
-    //this.createDonkeyPinata= this.createDonkeyPinata.bind(this);
+    //this.createbullPinata= this.createbullPinata.bind(this);
 
   //  this.init();
 
@@ -51,14 +51,14 @@ class ChooseBullPinata extends React.Component {
 
 
     let loader = new THREE.JSONLoader();
-    loader.load('./pinata.json', function(geometry, materials) {
-      console.log('Donkey Pinata', geometry);
+    loader.load('./public/images/bull.json', function(geometry, materials) {
+      console.log('bull Pinata', geometry);
 
-      var material = new THREE.MeshNormalMaterial();
-      donkeyPinata = new THREE.Mesh(geometry, material);
-      donkeyPinata.scale.x = donkeyPinata.scale.y = donkeyPinata.scale.z = .65;
-      donkeyPinata.translation = geometry.center(geometry);
-      donkeyPinata.tl = new TimelineMax({});
+      var material = new THREE.MeshStandardMaterial();
+      bullPinata = new THREE.Mesh(geometry, material);
+      bullPinata.scale.x = bullPinata.scale.y = bullPinata.scale.z = .65;
+      bullPinata.translation = geometry.center(geometry);
+      bullPinata.tl = new TimelineMax({});
 
 
 
@@ -69,51 +69,63 @@ class ChooseBullPinata extends React.Component {
     directionalLight.lookAt(new THREE.Vector3(0, 0, 0));
     scene.add(directionalLight);
     //
-    // setTimeout(()=>{ donkeyPinata.tl.to(donkeyPinata.rotation, 1, {y:Math.PI/4});scene.add(donkeyPinata); renderer.render(scene, camera);
+    // setTimeout(()=>{ bullPinata.tl.to(bullPinata.rotation, 1, {y:Math.PI/4});scene.add(bullPinata); renderer.render(scene, camera);
     //   }, 500);
     setTimeout(() => {
-      this.createDonkeyPinata()
+      this.createbullPinata()
     }, 300);
 
 
 
   }
 
-  createDonkeyPinata() {
-    console.log(donkeyPinata);
+  createbullPinata() {
+    console.log(bullPinata);
 
-    donkeyPinata.tl = new TimelineMax({});
+    bullPinata.tl = new TimelineMax({});
 
-    donkeyPinata.tl.to(donkeyPinata.position, 3, {z: 40});
+    bullPinata.tl.to(bullPinata.position, 3, {z: 40});
 
     //
     //   //look both ways
-    donkeyPinata.tl.to(donkeyPinata.rotation, 3, {
-      y: Math.PI / 4
+    bullPinata.tl.to(bullPinata.rotation, 1, {
+      y: 3*Math.PI / 2
     });
-    donkeyPinata.tl.to(donkeyPinata.rotation, 3, {
-      y: -Math.PI / 4
+    bullPinata.tl.to(bullPinata.position, .2, {x: -5});
+
+    bullPinata.tl.to(bullPinata.rotation, 1, {
+      y: Math.PI
     });
-    donkeyPinata.tl.to(donkeyPinata.rotation, 1, {y:0});
+
+    bullPinata.tl.to(bullPinata.position, .2, {z: -5});
+
+    bullPinata.tl.to(bullPinata.rotation, 1, {
+      y: Math.PI/2
+    });
+
+    bullPinata.tl.to(bullPinata.position, .2, {x: 0});
+
+    bullPinata.tl.to(bullPinata.rotation, 1, {
+      y: 2*Math.PI
+    });
+
+    bullPinata.tl.to(bullPinata.position, .2, {z:43});
 
 
-    //donkey jump
-    donkeyPinata.tl.to(donkeyPinata.position, .2, {y: 5});
-    donkeyPinata.tl.to(donkeyPinata.position, 1, {y: 0, ease:Power4.easeOut});
 
-    //donkey flip
-    //donkeyPinata.tl.to(donkeyPinata.rotation, 2, {x:-Math.PI/4, ease:Back.easeInOut});
+    //bull jump
 
-    donkeyPinata.tl.to(donkeyPinata.rotation, 2, {x:-Math.PI*6});
-  //	donkeyPinata.tl.to(donkeyPinata.rotation, .2, {x:0});
+    bullPinata.tl.to(bullPinata.position, .2, {y:2, ease:Power4.easeOut});
+
+    bullPinata.tl.to(bullPinata.position, .2, {y:0, ease:Power4.easeOut});
 
 
-    //turn and walk away
-    donkeyPinata.tl.to(donkeyPinata.rotation, 3, {y:Math.PI});
+    //bull flip
+    //bullPinata.tl.to(bullPinata.rotation, 2, {x:-Math.PI/4, ease:Back.easeInOut});
 
-    donkeyPinata.tl.to(donkeyPinata.position, 5, {z:-1000});
 
-    scene.add(donkeyPinata);
+
+    scene.add(bullPinata);
     this.render1();
     //renderer.render(scene, camera);
 
@@ -139,7 +151,6 @@ class ChooseBullPinata extends React.Component {
           <canvas ref="threeCanvas"></canvas>
         </div>
 
-        <div className='user-info'>This is the donkey intro!! rara!</div>
       </div>
     );
   }

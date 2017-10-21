@@ -14,6 +14,7 @@ class PinataProfile extends React.Component {
 
     this.state = {
       isHidden: true,
+
       //profile_pic:"https://s3-us-west-2.amazonaws.com/petopair-s3-bucket/profpic"+this.props.currentUser._id
     }
   }
@@ -24,6 +25,7 @@ class PinataProfile extends React.Component {
 
 
   render() {
+    const src="/public/images/"+this.props.currentUser.pet+"good.jpeg";
     return (
       <div className="pet-div toggle-div"> <h2>Your Pinata Profile</h2>
         <div className='pinata-info info'>
@@ -32,7 +34,7 @@ class PinataProfile extends React.Component {
           <p>Candy:{this.props.currentUser.candy}</p>
           <p>Type:{this.props.currentUser.pet}</p>
         </div>
-        <div><img ref="petPinataImg" id="main-pinata-pic" src="/public/images/donkeygood.png"  style={{width:200,height:"auto"}}/></div>
+        <div><img ref="petPinataImg" alt="CHOOSE A PINATA!" id="main-pinata-pic" src={src}  style={{width:200,height:"auto"}}/></div>
         {/* </div><a href="/uploadProfilePic">UPLOAD PROFILE PIC</a> */}
         {/* <div>
           <button onClick={this.toggleHidden.bind(this)} >
