@@ -40,17 +40,17 @@ module.exports = function(passport, app, user) {
   //   console.log("isloggedInNot")
   // }
 
-//   app.get('/checkLogin', function(req, res) {
-//     if(req.isAuthenticated()){
-//       console.log("true")
-//       return true;
-//     }
-//     else{
-//     console.log("false")
-//
-//     return false;
-//   }
-// });
+  //   app.get('/checkLogin', function(req, res) {
+  //     if(req.isAuthenticated()){
+  //       console.log("true")
+  //       return true;
+  //     }
+  //     else{
+  //     console.log("false")
+  //
+  //     return false;
+  //   }
+  // });
 
   app.get("/profile/:username", function(req, res) {
     // finds the currently logged in user and returns their info to the profile page
@@ -239,6 +239,13 @@ module.exports = function(passport, app, user) {
       human_id: req.user.id
     }
 
+    Image.findOneAndRemove({
+      img_url: req.files.file.name + req.user.id
+    }).catch(function(err){
+            console.log(err);
+    })
+
+
     Image.create(imageInfo).then(function(results) {
       //  res.json(results);
     }).catch(function(err) {
@@ -271,8 +278,8 @@ module.exports = function(passport, app, user) {
       });
       uploader.on('end', function() {
         console.log('File uploaded!');
-        res.status(200);
-        //res.sendFile(path.join(__dirname + '/../../components/children/profile.html'));
+        //res.status(200);
+        res.sendFile(path.join(__dirname + '/../../public/index.html'));
       });
       setTimeout(function() {
         if (fs.existsSync('uploads/' + imageInfo.img_url)) { // check to ensure file still exists on file system

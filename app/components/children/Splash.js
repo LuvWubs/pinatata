@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import Favicon from 'react-favicon';
 const axios = require("axios");
 //const React = require("react");
 
@@ -92,20 +93,26 @@ class Splash extends React.Component {
     const Anim2=()=><DonkeyIntro />
     const Green=()=><GreenS />
     return (
-    <div>
+    <div className="splash-wrapper">
+      <div>
+    <Favicon url="http://oflisback.github.io/react-favicon/public/img/github.ico" />
+    <h1>Hello, Favicon!</h1>
+  </div>
+
       <Router>
 
         {/* <Simple /> */}
-        <div className="container">
+        <div className="splash-container">
 
         <div className="auth-container">
           <div className="jumbotron">
             <h1 className="sub-title1">Pinatata</h1>
-            <p className="sub-title2">
+            <div className="sub-title2">
               <em>Grow, Fight, Play, Love
               </em>
-            </p>
-            <div className="sign-up-error">{this.state.signUpError}</div>
+              <p className="sign-up-error">{this.state.signUpError}</p>
+
+            </div>
 
             <div className='nav-links'>
 
@@ -117,18 +124,15 @@ class Splash extends React.Component {
               <Link to="/signin" onClick={this.clearError} className='link-auth' style={{
                 textDecoration: 'none'
               }}>signin</Link>
-
+              {/* <br />
               <Link to="/anim" className='link-auth' style={{
                 textDecoration: 'none'
               }}>anim</Link>
 
-              <Link to="/anim2" className='link-auth' style={{
-                textDecoration: 'none'
-              }}>anim2</Link>
 
               <Link to="/green" className='link-auth' style={{
                 textDecoration: 'none'
-              }}>greensock</Link>
+              }}>greensock</Link> */}
 
             </div>
           </div>
@@ -137,15 +141,17 @@ class Splash extends React.Component {
             <Switch>
               <Route path="/signin" component={Sign_in}/>
               <Route path="/signup" component={Sign_up}/>
-              <Route path="/anim" component={Anim}/>
+
+              {/* <Route path="/anim" component={Anim}/>
               <Route path="/anim2" component={Anim2}/>
-              <Route path="/green" component={Green}/>
+              <br />
+              <Route path="/green" component={Green}/> */}
             </Switch>
           </div>
         </div>
       </div>
       </Router>
-      <div id='donkeyDiv' className='donkeyIntro'><DonkeyIntro /></div>
+      <div id='donkeyDiv' className='donkey-intro'><DonkeyIntro /></div>
     </div>
   )
 

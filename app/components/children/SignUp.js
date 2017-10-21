@@ -18,7 +18,13 @@ class SignUp extends React.Component {
       last_name: "",
       username: "",
       password: "",
-      email: ""
+      email: "",
+      candy: 50,
+      happy: 1,
+      level: 0,
+      pet: "",
+      sweetness:100
+
     };
 
     //  this.state = {term: ''};

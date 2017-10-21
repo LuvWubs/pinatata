@@ -76,6 +76,18 @@ app.get("/signin", function(req,res){
   res.sendFile(__dirname + "/public/index.html");
 })
 
+app.get("/profile", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get("/battle", function(req,res){
+  res.sendFile(__dirname + "/public/index.html");
+})
+
+app.get("/battlewindow", function(req,res){
+  res.sendFile(__dirname + "/public/index.html");
+})
+
 app.get("/public/:folder/:file", function(req, res){
   var folder=req.params.folder;
   var file=req.params.file;

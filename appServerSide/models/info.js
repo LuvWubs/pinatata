@@ -17,6 +17,21 @@ var HumanSchema = new Schema({
   },
   email: {
     type:String
+  },
+  candy: {
+    type:Number
+  },
+  happy: {
+    type:Number
+  },
+  level: {
+    type:Number
+  },
+  pet: {
+    type:String
+  },
+  sweetness:{
+    type:Number
   }
 });
 

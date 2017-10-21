@@ -11,9 +11,9 @@ let renderer,
   donkeyPinata,
   directionalLight;
 
-const ww=1000;
-const wh=500;
 
+const ww = window.innerWidth;
+const wh = window.innerHeight;
 // Creating the Results component
 
 class DonkeyIntro extends React.Component {
@@ -116,10 +116,10 @@ class DonkeyIntro extends React.Component {
 
     scene = new THREE.Scene();
     //camera = new THREE.PerspectiveCamera(50, 1000 / 1000, 0.1, 1000);
-    camera = new THREE.PerspectiveCamera(50, 1000 / 500, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(50, ww / wh, 0.1, 1000);
 
     renderer = new THREE.WebGLRenderer({canvas: this.refs.threeCanvas, alpha: true});
-    renderer.setSize(1000, 500);
+    renderer.setSize(ww, wh);
 
     camera.position.z = 50;
     //camera.position.y = 100;

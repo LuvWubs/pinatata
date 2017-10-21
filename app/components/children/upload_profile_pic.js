@@ -38,7 +38,8 @@ axios.post('/profile', data, {
   }
 })
   .then((response) => {
-    console.log(response)
+    console.log("RAWRRRR",response)
+    window.location.reload();
   }).catch((error) => {
     console.log('nay')
   });
@@ -159,23 +160,23 @@ axios.post('/profile', data, {
     let imagePreview = null;
     if (imagePreviewUrl) {
       imagePreview = (<img src={imagePreviewUrl}/>);
-    } else {
-      imagePreview = (
-        <div className="previewText">Select an Image!</div>
-      );
     }
     return (
       <div>
+
+        {/* <div className="imgPreview">
+          {imagePreview}
+        </div> */}
         <form ref="uploadForm" encType="multipart/form-data">
           <input type='file' onChange={this.getPhoto}/>
-          <button onClick={this.pressButton} >
-            Get it
-          </button>
+          <div className="imgPreview">
+            {imagePreview}
+          </div>
+          <div><button onClick={this.pressButton} >
+            Submit
+          </button></div>
           {/* type="submit" name="action" action="/profile" method="post"*/}
         </form>
-        <div className="imgPreview">
-          {imagePreview}
-        </div>
       </div>
     )
   }
