@@ -9,7 +9,7 @@
     "start": "node server.js",
     "build": "webpack"
   },
-  "author": "Ahmed Haque",
+  "author": "Mayat Smolnik",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.12.0",

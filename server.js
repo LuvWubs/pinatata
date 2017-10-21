@@ -37,8 +37,8 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //app.use(express.static("public"));
 
-//mongoose.connect("mongodb://root:password@ds113795.mlab.com:13795/savedarticles")
-mongoose.connect("mongodb://localhost/PinataTest", { useMongoClient: true });
+mongoose.connect("mongodb://root:password@ds113795.mlab.com:13795/savedarticles")
+//mongoose.connect("mongodb://localhost/PinataTest", { useMongoClient: true });
 var db = mongoose.connection;
 
 db.on("error", function(err) {
