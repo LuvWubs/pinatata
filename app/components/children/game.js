@@ -6,7 +6,10 @@ const axios = require("axios");
 const Profile = require("./Profile");
 //const Profile = require("./Profile");
 const BattleWindow = require("./donkey");
-const PinataProfile = require("./pinataProfile")
+const PinataProfile = require("./pinataProfile");
+const Instructions= require("./instructions");
+const ChoosePinata= require("./choosePinata");
+
 
 //const Navbar = require("./Navbar");
 
@@ -60,8 +63,8 @@ class Game extends React.Component {
 
   render() {
     const BattleRef = () => <BattleWindow currentUser={this.props.currentUser}/>
-    const ProfileRef = () => <Profile currentUser={this.props.currentUser}/>
-    const PinataProfileRef = () => <PinataProfile currentUser={this.props.currentUser}/>
+    const InstructionsRef = () => <Instructions />
+    const ChoosePinataRef = () => <ChoosePinata currentUser={this.props.currentUser}/>
 
     return (
       <div>
@@ -82,18 +85,18 @@ class Game extends React.Component {
 
               <div className='nav-links'>
                 <button className='button logout-button' onClick={this.logOut}>LogOut</button>
-                <Link to="/profile" className='game-link' style={{
+                <Link to="/instructions" className='game-link' style={{
                   textDecoration: 'none'
-                }}>Profile</Link>
+                }}>Instructions</Link>
                 {/* </div>
                 <div className='nav'> */}
                 <Link to="/battle" className='game-link' style={{
                   textDecoration: 'none'
                 }}>Battle</Link>
 
-                <Link to="/pinataprofile" className='game-link' style={{
+                <Link to="/" className='game-link' style={{
                   textDecoration: 'none'
-                }}>Pinata Playground</Link>
+                }}>Choose Pinata</Link>
 
               </div>
 
@@ -111,8 +114,8 @@ class Game extends React.Component {
               <div className='game-component-div'>
                 <Switch>
                   <Route path="/battle" component={BattleRef}/>
-                  <Route path="/profile" component={ProfileRef}/>
-                  <Route path="/pinataprofile" component={PinataProfileRef}/>
+                  <Route path="/instructions" component={InstructionsRef}/>
+                  <Route path="/" component={ChoosePinataRef}/>
 
                 </Switch>
               </div>

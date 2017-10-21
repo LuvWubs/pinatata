@@ -28,7 +28,9 @@ class DonkeySVG extends React.Component {
     return (
 
       <div>
-        <Donkey/>
+        <div className="rainbow">
+        <Donkey />
+      </div>
         <svg height="400" width="450">
           <path id="lineAB" d="M 100 350 l 150 -300" stroke="red" strokeWidth="3" fill="none"/>
           <path id="lineBC" d="M 250 50 l 150 300" stroke="red" strokeWidth="3" fill="none"/>
@@ -50,7 +52,7 @@ class DonkeySVG extends React.Component {
         </svg>
 
         <svg id="donkeyPolygon" height="500" width="1000">
-  
+
           <polygon id="donkeyPolygon1" points="131 146,151 73,141 46,154 9,163 71,173 69,169 6,184 28,191 67,222 88,221 116,
           190 127,191 181,230 265,196 270,186 207,181 209,189 271,170 270,170 213,94 216,107 274,84 275,
           78 231,70 229,75 277,50 277,53 215,50 170,33 209,11 202,45 154" style={{fill:'red',stroke:'black',strokeWidth:5}}/>

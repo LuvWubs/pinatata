@@ -28,29 +28,27 @@ module.exports = function(passport, app, user) {
   var User = user;
   var LocalStrategy = require("passport-local").Strategy;
 
-  // function isLoggedIn(req, res, next) {
-  //   console.log("isloggedIn?")
-  //   if (req.isAuthenticated()) {
-  //     //	console.log(req);
-  //     console.log("isloggedInAuth")
-  //     return next();
-  //   }
-  //
-  //   res.redirect('/');
-  //   console.log("isloggedInNot")
-  // }
 
-  //   app.get('/checkLogin', function(req, res) {
-  //     if(req.isAuthenticated()){
-  //       console.log("true")
-  //       return true;
-  //     }
-  //     else{
-  //     console.log("false")
-  //
-  //     return false;
-  //   }
-  // });
+
+  app.post("/updateAnimal", function(req, res) {
+    // finds the currently logged in user and returns their info to the profile page
+    //  return JSON.parse(req.user);
+    console.log("At updateAnimal", req.body);
+
+    Human.update(
+    {
+        _id: req.user._id,
+
+    },
+    {
+        $set: { 'pet': req.body.animal} }
+    , function(err, human) {
+           if (err) console.log(err);
+           res.send(req.user);
+           console.log(req.user);
+    });
+
+  });
 
   app.get("/profile/:username", function(req, res) {
     // finds the currently logged in user and returns their info to the profile page
@@ -66,11 +64,13 @@ module.exports = function(passport, app, user) {
       if (human) { // Search could come back empty, so we should protect against sending nothing back
         res.status(200).send(human)
       } else { // In case no kitten was found with the given query
-        res.status(200).send("No kitten found")
+        res.status(200).send("No human found")
       }
     });
 
   });
+
+
 
   app.get("/profile_pic", function(req, res) {
     if (req.user) {
