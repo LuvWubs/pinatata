@@ -24,18 +24,24 @@ class Game extends React.Component {
     this.state = {
       profileIsHidden: false,
       petIsHidden: false,
+      currentUser:"pickles"
       //profile_pic:"https://s3-us-west-2.amazonaws.com/petopair-s3-bucket/profpic"+this.props.currentUser._id
     }
     this.profileToggleHidden = this.profileToggleHidden.bind(this);
     this.petToggleHidden = this.petToggleHidden.bind(this);
+    this.setCurrentUser = this.setCurrentUser.bind(this);
 
-    //  const currentUser=this.props.currentUser
-    // this.state = {
-    //  currentUser:"",
-    //
-    //
-    // };
 
+
+  }
+  componentWillReceiveProps(props) {
+      this.setState({currentUser: props.currentUser});
+        console.log("props",props.currentUser);
+  }
+
+  setCurrentUser(currentUser){
+    this.setState({currentUser:currentUser})
+    console.log(currentUser);
   }
 
   logOut() {
@@ -62,9 +68,9 @@ class Game extends React.Component {
   }
 
   render() {
-    const BattleRef = () => <BattleWindow currentUser={this.props.currentUser}/>
+    const BattleRef = () => <BattleWindow currentUser={this.state.currentUser}/>
     const InstructionsRef = () => <Instructions />
-    const ChoosePinataRef = () => <ChoosePinata currentUser={this.props.currentUser}/>
+    const ChoosePinataRef = () => <ChoosePinata currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
 
     return (
       <div>
@@ -77,7 +83,7 @@ class Game extends React.Component {
                 <button onClick={this.petToggleHidden.bind(this)}>Toggle Pinata</button>
 
               </div>
-              <h1 className="game-title">Pinatata</h1>
+              <h1 className="game-title">Pinatata </h1>
               <p className="game-sub-title">
                 <em>Grow, Play, Love, Fight
                 </em>
@@ -104,10 +110,10 @@ class Game extends React.Component {
 
             <div className='game-content'>
               <div className="game-toggle-section">
-                <div >{!this.state.profileIsHidden && <Profile currentUser={this.props.currentUser}/>}
+                <div >{!this.state.profileIsHidden && <Profile currentUser={this.state.currentUser}/>}
                 </div>
                 {/* <PinataProfile currentUser={this.props.currentUser}/> */}
-                <div >{!this.state.petIsHidden && <PinataProfile currentUser={this.props.currentUser}/>}
+                <div >{!this.state.petIsHidden && <PinataProfile currentUser={this.state.currentUser}/>}
                 </div>
               </div>
 

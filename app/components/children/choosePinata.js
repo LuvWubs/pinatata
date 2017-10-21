@@ -37,6 +37,16 @@ class ChoosePinata extends React.Component {
     let animalObj={animal:animal}
     axios.post("/updateAnimal", {animal: animal }).then((response) => {
       console.log("updatedAnimal", response.data);
+    //  this.props.setCurrentUser(response.data)
+
+
+    }).catch((error) => {
+      console.log("oh no",error);
+
+    });
+    axios.get("/userInfo").then((response) => {
+      console.log("updatedAnimal2", response.data);
+      this.props.setCurrentUser(response.data)
 
 
     }).catch((error) => {

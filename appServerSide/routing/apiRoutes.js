@@ -50,6 +50,26 @@ module.exports = function(passport, app, user) {
 
   });
 
+  app.get("/userInfo", function(req, res) {
+    // finds the currently logged in user and returns their info to the profile page
+    //  return JSON.parse(req.user);
+
+
+    Human.findOne({
+      "_id": req.user._id
+    }, (err, human) => {
+      if (err) {
+        res.status(200).send(err)
+      }
+      if (human) { // Search could come back empty, so we should protect against sending nothing back
+        res.status(200).send(human)
+      } else { // In case no kitten was found with the given query
+        res.status(200).send("No human found")
+      }
+    });
+
+  });
+
   app.get("/profile/:username", function(req, res) {
     // finds the currently logged in user and returns their info to the profile page
     //  return JSON.parse(req.user);
